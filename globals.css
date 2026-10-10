@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0f1013;
+  --color-panel: #15171c;
+  --color-raised: #1b1e25;
+  --color-hover: #21252e;
+  --color-line: #262b34;
+  --color-mist: #96a0af;
+  --color-faint: #6b7686;
+  --color-snow: #edeff3;
+  --color-accent-soft: #ffa36b;
+  --color-mint: #34d399;
+}
+
+@theme inline {
+  --color-accent: var(--accent);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-manrope), ui-sans-serif, sans-serif;
+}
+
+:root {
+  --accent: #ff6d2e;
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+  color: #fff;
+}
+
+/* thin scrollbars */
+.scroll-thin::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #2c323d;
+  border-radius: 8px;
+}
+.scroll-thin::-webkit-scrollbar-thumb:hover {
+  background: #3a4250;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* range inputs (trim sliders) */
+input[type="range"].trim {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: #2c323d;
+  outline: none;
+}
+input[type="range"].trim::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 3px solid #0f1013;
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--accent) 60%, transparent);
+  cursor: pointer;
+}
+input[type="range"].trim::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 3px solid #0f1013;
+  cursor: pointer;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.toast-in {
+  animation: toast-in 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.35s ease both;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.modal-in {
+  animation: modal-in 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.1) both;
+}
+
+@keyframes stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 24px 0;
+  }
+}
+.progress-stripes {
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(255, 255, 255, 0.14) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 24px 24px;
+  animation: stripes 0.9s linear infinite;
+}
+
+@keyframes wave {
+  from {
+    transform: scaleY(0.35);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+.wavebar {
+  animation: wave 0.5s ease-in-out infinite alternate;
+  transform-origin: center;
+}
